@@ -14,6 +14,14 @@
     $nombre = "Santiago Calderon";
     $anyo = 2003;
     ?>
-    <p>Me llamo <?php echo $nombre; ?> y nací en el año <?php echo $anyo; ?> .</p>
+    <p>Me llamo <?php echo $nombre; ?> y nací en el año <?php echo $anyo; ?>.</p>
+
+    <p>Me llamo <?= $nombre; ?> y nací en el año <?= $anyo; ?>.</p>
+
+    <p>Me llamo <?php print $nombre; ?> y nací en el año <?php print $anyo; ?>.</p>
 </body>
+
+
+</body>
+
 </html>
