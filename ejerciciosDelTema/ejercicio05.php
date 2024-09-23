@@ -6,7 +6,7 @@
     <title>Ejercicio 05</title>
 </head>
 <body>
-    <h1>Ejercicio 05</h1>
+    <h1>Ampliación ejercicio 04</h1>
 <?php
 $nota1 = rand(0, 10);
 $nota2 = rand(0, 10);

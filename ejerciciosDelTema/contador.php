@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio 06</title>
+    <!--Santiago Calderon Castaño-->
+
 </head>
 
 <body>
-    <h1>Contador.</h1>
+    <h1>Ejercicio Contador.</h1>
     <?php
     echo "<h3>Contando de 1 a 100 usando un for</h3>";
     #Números de 1 al 100 usando un for
