@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 06</title>
+    <title>Ejercicio 07</title>
     <!--Santiago Calderon Castaño-->
 
 </head>
