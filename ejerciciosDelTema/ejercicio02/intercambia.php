@@ -22,12 +22,13 @@
 
     function mostarValores($a, $b)
     {
-        echo "<p>El valor de a es : $a \n  El valor de b es : $b</p>";
+        echo "<p>El valor de a es : $a <br>  El valor de b es : $b</p>";
 
         intercambiarValores($a, $b);
 
-        echo "<p>El valor de a ahora es : $a \n  El valor de b ahora es : $b</p>";
+        echo "<p>El valor de a ahora es : $a <br>  El valor de b ahora es : $b</p>";
     }
+    mostarValores($a, $b);
     ?>
 </body>
 
