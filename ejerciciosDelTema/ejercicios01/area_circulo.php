@@ -18,7 +18,7 @@
 
     <?php
     $radio = 3.5;
-    $area = PI * pow($radio, 2);
+    $area =  PI * pow($radio, 2);
     echo  "El área del círculo es: $area";
     ?>
 
