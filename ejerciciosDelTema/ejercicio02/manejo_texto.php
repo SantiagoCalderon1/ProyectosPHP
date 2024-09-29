@@ -48,7 +48,7 @@
                         //aquí el implode no esta modificando el array solo lo imprime
 
     $sumaNumeros =  array_sum($numeros);
-    echo "<p>La suma del array es: $sumaNumeros</p>";
+    echo "<p>La suma del array es: $sumaNumeros</p> ";
     ?>
 </body>
 
