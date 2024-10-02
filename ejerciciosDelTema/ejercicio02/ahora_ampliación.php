@@ -29,6 +29,7 @@
 
     function cuantosAñosMesesDiasTengo($fechaNacimiento)
     {
+        //dd/mm/aaaa  ->   aaaa/mm/dd
         $fechaNacimiento = explode('/',  $fechaNacimiento);
 
         // Verificamos que la fecha sea válida
