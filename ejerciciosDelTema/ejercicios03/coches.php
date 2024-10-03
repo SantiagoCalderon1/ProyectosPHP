@@ -22,6 +22,23 @@
         '999JKL' => array("Kia", "Optima", "Sedán"),
         '101LMN' => array("Subaru", "Impreza", "Hatchback")
     );
+
+    // así de ordena el array de forma ascendente, krsort() descendete
+    ksort($coches);
+
+    /*
+    foreach ($coches as $coche) { así solamente se obtiene el contenido del array asociativo
+
+    foreach ($coches as $coche => $valores) { así se obtiene la clave y valor 
+    del array asociativo
+    */
+
+    foreach ($coches as $coche => $valores) {
+        echo ("<p>Matricula: $coche, Marca: $valores[0], Modelo: $valores[1], Tipo: $valores[2]</p>");
+    }
+
+    // print_r($coches);
+
     ?>
 
 </body>
