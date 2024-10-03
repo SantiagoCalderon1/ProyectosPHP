@@ -11,6 +11,7 @@
     <h1>Ejercicio 02-09</h1>
     <?php
     copiaSeguridad("datos.txt");
+    //tuve que crear el archivo yo, porque el PC-14 no tengo permisos para crear archivos desde el código
     leerArchivo("datos-copia.txt");
 
     function copiaSeguridad($fichero)
