@@ -17,7 +17,7 @@
 
     <?php 
 
-    cons
+    
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //aquí accedemos al valor del input con $_POST
         $fechaNacimiento = $_POST["fecha-nacimiento"];
