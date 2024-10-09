@@ -1,6 +1,10 @@
+<?php 
+// Incluir las clases
+include_once 'clasePersona.php';
+include_once 'claseEstudiante.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,55 +12,28 @@
 </head>
 
 <body>
-    <h1>Ejercicio 04-01</h1>
+    <h1>Ejercicio 04-01 sobre clases</h1>
+    
     <?php
-    class Persona
-    {
-        private $dni = "";
-        private $nombre = "";
-        private $email = "";
+    // Creamos un objeto de cada tipo
+    $persona = new Persona("12345678A", "Santiago Calderon", "santiago@papi.com");
+    $estudiante = new Estudiante("87654321B", "Ramón Bilbao", "Ramon@buenvino.com", "EXP001");
+    // Mostramos la información de cada objeto
+    ?>
+    <h2>Información de la Persona 1</h2>
+    <p><?php echo $persona->mostrar(); //Llamamos a la función Mostrar() de Persona?></p>
+    <h2>Información del Estudiante 1</h2>
+    <p><?php echo $estudiante->mostrar(); //Llamamos a la función Mostrar() de Estudiante ?></p>
 
-        public function __construct($dni,  $nombre, $email)
-        {
-            $this->dni = $dni;
-            $this->nombre = $nombre;
-            $this->email = $email;
-        }
-
-        public function __getDNI()
-        {
-            return $this->dni;
-        }
-        public function __getNombre()
-        {
-            return $this->nombre;
-        }
-        public function __getEmail()
-        {
-            return $this->email;
-        }
-
-        public function __setDni($dni)
-        {
-            return $this->dni =  $dni;
-        }
-        public function __setNombre($nombre)
-        {
-            return $this->nombre = $nombre;
-        }
-        public function __setEmail($email)
-        {
-            return $$this->email = $email;
-        }
-
-        //get_class($this) así se obtiene el nombre de la clase
-
-        public function Mostrar(){
-            echo "Nombre: ". __getNombre()."";
-        }
-    }
+    <?php
+    // Cambiando algún atributo usando setters
+    $persona->__setEmail("nuevoSantiago@mipapi.com");
+    $estudiante->__setNumExpediente("EXP002");
     ?>
 
+    <h3>Información modificada de la Persona 1</h3>
+    <p><?php echo $persona->mostrar(); ?></p>
+    <h3>Información modificada del Estudiante 1</h3>
+    <p><?php echo $estudiante->mostrar(); ?></p>
 </body>
-
 </html>
