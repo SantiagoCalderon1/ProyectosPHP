@@ -30,7 +30,6 @@
         }
     </style>
 </head>
-
 <body>
     <h1>Registro de usuario</h1>
     <form action="../controllers/auth.php" method="POST">
@@ -44,10 +43,17 @@
         </div>
         <div>
             <button type="submit">Registrarse</button>
+            <input type="hidden" name="source" value="1">
         </div>
     </form>
-
     <div class="error">
+        <?php 
+        if (isset($_GET['error']) && $_GET['error']== 1) {
+            echo '<h2>Ya hay un usuario registrardo con esos datos.</h2>';
+        }
+
+        
+        ?>
     </div>
 </body>
 

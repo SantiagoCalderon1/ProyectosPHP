@@ -1,17 +1,14 @@
 {
     "user1": {
-        "nombre": "Jorge",
-        "edad": 20,
-        "email": "abc@def.com"
+        "username": "aaa",
+        "password": ,
     },
     "user2": {
-        "nombre": "Andres",
-        "edad": 21,
-        "email": "abc@def.com"
+        "username": "bbb",
+        "password": ,
     },
     "user3": {
-        "nombre": "Camilo",
-        "edad": 22,
-        "email": "abc@def.com"
-    }
+        "username": "ccc",
+        "password": ,
+    },
 }

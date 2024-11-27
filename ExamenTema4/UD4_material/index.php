@@ -36,10 +36,9 @@
     $fecha = $time->format('d-m-Y');
     $horaActual = $hora . " " . $fecha;
     $horaActual = str_replace(" ", " ", $horaActual);
-    
-    //ExamenTema4/UD4_material/index.php
-    
-    ?>
+        
+    // ProyectosPHP/ProyectosPHP/ExamenTema4/UD4_material/views/register.php
+    ?>  
     <div>
         <div id="registro"><a href="../UD4_material/views/register.php">Regístrate</a></div>
         <div id="login"><a href="../UD4_material/views/login.php">Accede</a></div>

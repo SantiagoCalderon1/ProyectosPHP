@@ -29,11 +29,18 @@
     </style>
 </head> 
 <body> 
+    <?php 
+    session_start();
+    if (isset($_SESSION['username'])) {
+        $username = $_SESSION['username'];
+    }
+    
+    ?>
     <h1>Mis notas</h1> 
-    <p>Bienvenid@, NOMBRE_DE_USUARIO</p> 
-    <a href="">Cerrar Sesión</a> 
+    <p>Bienvenid@, <?php echo htmlspecialchars($username)?></p> 
+    <a href="../views/logout.php">Cerrar Sesión</a> 
     <h2>Añadir Nota</h2> 
-    <form action="" method=""> 
+    <form action="../models/note.php" method="POST"> 
         <textarea name="note" required></textarea> 
         <button type="submit">Agregar Nota</button> 
     </form> 
