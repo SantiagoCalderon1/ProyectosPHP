@@ -43,16 +43,14 @@
         </div>
         <div>
             <button type="submit">Registrarse</button>
-            <input type="hidden" name="source" value="1">
+            <input type="hidden" name="source" value="register">
         </div>
     </form>
     <div class="error">
         <?php 
         if (isset($_GET['error']) && $_GET['error']== 1) {
-            echo '<h2>Ya hay un usuario registrardo con esos datos.</h2>';
+            echo '<p>Ya hay un usuario registrardo con esos datos.</p>';
         }
-
-        
         ?>
     </div>
 </body>
