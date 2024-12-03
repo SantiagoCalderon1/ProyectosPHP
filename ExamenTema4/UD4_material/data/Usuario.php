@@ -1,25 +1,16 @@
 <?php
-class Usuario{
-    public function __construct(
-        private string $username = '',
-        private string $password = ''
-    ) {
+abstract class Usuario{
+
+    private static $file = '../data/users.json';
+
+    public static function saveUser($user){
+
     }
 
-    function getUsername() : string {
-        return $this->username;
+    public static function getAllUsers(){
+
     }
-    function getPassword() : string {
-        return $this->password;
-    }
+
     
-    function setUSername(string $newUSername) : object {
-        $this->username = $newUSername;
-        return $this;
-    }
-    function setPassword(string $newPassword) : object {
-        $this->password = $newPassword;
-        return $this;
-    }
 }
 ?>

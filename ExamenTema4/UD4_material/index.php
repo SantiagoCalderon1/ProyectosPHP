@@ -28,17 +28,6 @@
 </head>
 <body>
     <h1>Bienvenido al sistema de Gestión de Notas</h1>
-
-    <?php 
-    
-    $time = new DateTime();
-    $hora = $time->format('H:i:s');
-    $fecha = $time->format('d-m-Y');
-    $horaActual = $hora . " " . $fecha;
-    $horaActual = str_replace(" ", " ", $horaActual);
-        
-    // ProyectosPHP/ProyectosPHP/ExamenTema4/UD4_material/views/register.php
-    ?>  
     <div>
         <div id="registro"><a href="../UD4_material/views/register.php">Regístrate</a></div>
         <div id="login"><a href="../UD4_material/views/login.php">Accede</a></div>
