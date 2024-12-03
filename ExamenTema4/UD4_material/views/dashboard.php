@@ -40,7 +40,7 @@
     <p>Bienvenid@, <?php echo htmlspecialchars($username)?></p> 
     <a href="../views/logout.php">Cerrar Sesión</a> 
     <h2>Añadir Nota</h2> 
-    <form action="../models/note.php" method="POST"> 
+    <form action="../controllers/notes.php" method="POST"> 
         <textarea name="note" required></textarea> 
         <button type="submit">Agregar Nota</button> 
     </form> 
