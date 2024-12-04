@@ -110,7 +110,7 @@
             <label for="nombreCliente">Nombre:</label>
             <input type="text" name="nombreCliente">
             <label for="apellidos">Apellidos:</label>
-            <input type="apellidos" name="apellidos">
+            <input type="apellidos" name="apellidosClientes">
         </div>
 
         <div id="camposProducto" class="ocultar">

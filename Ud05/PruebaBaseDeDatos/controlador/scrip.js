@@ -17,6 +17,7 @@ const formDatos = document.getElementById("formDatos");
 const camposCliente = document.getElementById("camposCliente");
 const camposPedido = document.getElementById("camposPedido");
 const camposProducto = document.getElementById("camposProducto");
+
 const opcionTablaHidden = document.getElementById("opcionTablaHidden");
 const opcionAccionHidden = document.getElementById("opcionAccionHidden");
 

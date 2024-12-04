@@ -37,6 +37,7 @@ function listarDatos($opcionTabla)
 {
     switch ($opcionTabla) {
         case 'T1':
+            
             break;
         case 'T2':
             break;
@@ -45,7 +46,26 @@ function listarDatos($opcionTabla)
     }
 }
 
-function insertarDatos() {
+function insertarDatos($opcionTabla) {
+    switch ($opcionTabla) {
+        case 'T1':
+            if (isset($_POST['nombreCliente']) && isset($_POST['apellidosClientes'])) {
+                $nombreCliente = $_POST['nombreCliente'];
+                $
+            } else {
+                # code...
+            }
+            
+            insertarCliente();
+            break;
+        case 'T2':
+            break;
+        case 'T3':
+            break;
+    }
+}
+
+function actualizarDatos($opcionTabla) {
     switch ($opcionTabla) {
         case 'T1':
             break;
@@ -56,18 +76,7 @@ function insertarDatos() {
     }
 }
 
-function actualizarDatos() {
-    switch ($opcionTabla) {
-        case 'T1':
-            break;
-        case 'T2':
-            break;
-        case 'T3':
-            break;
-    }
-}
-
-function eliminarDatos() {
+function eliminarDatos($opcionTabla) {
     switch ($opcionTabla) {
         case 'T1':
             break;
