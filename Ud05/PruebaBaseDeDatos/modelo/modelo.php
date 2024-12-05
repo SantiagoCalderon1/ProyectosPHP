@@ -2,20 +2,25 @@
 session_start();
 
 include 'conexion.php';
+include 'Cliente.php';
+include 'Producto.php';
+include 'Pedidos.php';
 
-$conexion = conexion();
 
 //cliente
-
 function listarCliente() {}
 
 function insertarCliente($nombreCliente, $apellidoscliente)
 {
-    $sql = 'INSERT INTO cliente VALUES (' . $nombreCliente . ',' . $apellidoscliente . ')';
-    if (conexion()->query($sql)) {
-        echo '<p>Cliente insertado con éxito</p>';
+    $conexion = conexion();
+    echo '<br>En insertar cliente del modelo<br>';
+    $sql = 'INSERT INTO cliente (nombre,apellidos) VALUES (\'' . $nombreCliente . '\',\'' . $apellidoscliente . '\');';
+    echo 'sql: ' . $sql;
+    
+    if ($conexion->query($sql)) {
+        return true;
     } else {
-        echo '<p>Error al insertar cliente</p>';
+        return false;
     }
 }
 

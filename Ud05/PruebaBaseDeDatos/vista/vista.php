@@ -19,8 +19,7 @@
     }
 
     .ocultar {
-        display: none;
-
+        display: none !important;
     }
 
     body {
@@ -32,14 +31,29 @@
     }
 
     #formConfiguracion {
-        background-color: red;
+        background-color: gray;
+        color: white;
+
+        font-size: 20px;
+
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
 
         width: 400px;
-        height: 40vh;
+        height: 25vh;
+
+        margin: 20px 0;
+
+        border-radius: 20px;
+    }
+
+    #formConfiguracion #btns {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px
     }
 
     #formConfiguracion label,
@@ -49,13 +63,35 @@
     }
 
     #formDatos {
-        background-color: green;
+        background-color: gray;
+
+        color: white;
+
+        font-size: 20px;
+
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
 
         width: 400px;
-        height: 20vh;
+        margin: 20px 0;
+
+        border-radius: 20px;
+        padding: 20px 0;
+    }
+
+    #camposCliente,
+    #camposPedido,
+    #camposProducto {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5px;
+    }
+
+    #campoEnviar {
+        margin: 10px;
     }
 </style>
 
@@ -68,7 +104,6 @@
                 <option value="T2">Pedido</option>
                 <option value="T3">Producto</option>
             </select>
-
             <label for="opcionesAccion">Que acción</label>
             <select name="opcionesAccion" id="opcionesAccion">
                 <option value="A1">Listar Datos</option>
@@ -76,27 +111,11 @@
                 <option value="A3">Actualizar Datos</option>
                 <option value="A3">Eliminar Datos</option>
             </select>
-
-            <input type="submit" value="Aceptar">
-            <input type="submit" value="Cancelar">
+            <div id="btns">
+                <input type="submit" value="Aceptar">
+                <input type="submit" value="Cancelar">
+            </div>
         </form>
-
-    </div>
-
-    <div id="listarDatos">
-
-    </div>
-
-    <div id="insertarDatos">
-
-    </div>
-
-    <div id="actualizarDatos">
-
-    </div>
-
-    <div id="EliminarDatos">
-
     </div>
 
     <form action="../controlador/controlador.php" method="post" class="ocultar" id="formDatos">
@@ -105,17 +124,33 @@
 
         <div id="camposCliente" class="ocultar">
             <input type="hidden" name="">
-            <label for="idCliente">Id:</label>
-            <input type="text" name="idCliente">
+            <label for="clienteId">Id Cliente:</label>
+            <input type="text" name="clienteId">
             <label for="nombreCliente">Nombre:</label>
             <input type="text" name="nombreCliente">
-            <label for="apellidos">Apellidos:</label>
-            <input type="apellidos" name="apellidosClientes">
+            <label for="apellidosCliente">Apellidos:</label>
+            <input type="text" name="apellidosCliente">
+        </div>
+
+        <div id="camposPedido" class="ocultar">
+            <label for="pedidoId">Id Pedido:</label>
+            <input type="text" name="pedidoId">
+            <label for="productoId">Id Producto:</label>
+            <input type="text" name="producto">
+            <label for="idCliente">Id Cliente:</label>
+            <input type="text" name="idCliente">
+
+            <label for="fecha">Fecha:</label>
+            <input type="date" name="fecha">
+            <label for="precioPedido">Precio:</label>
+            <input type="number" name="precioPedido" min="0">
+            <label for="descripcio">Descripcion:</label>
+            <textarea name="descripcio" cols="30" rows="10"></textarea>
         </div>
 
         <div id="camposProducto" class="ocultar">
-            <label for="idProducto">Id:</label>
-            <input type="text" name="idProducto">
+            <label for="productoId">Id:</label>
+            <input type="text" name="productoId">
             <label for="nombreProducto">Nombre:</label>
             <input type="text" name="nombreProducto">
             <label for="cantidad">Cantidad:</label>
@@ -124,25 +159,31 @@
             <input type="number" name="precioProducto" min="0">
         </div>
 
-        <div id="camposPedido" class="ocultar">
-            <label for="idPedido">Id Pedido:</label>
-            <input type="text" name="idPedido">
-            <label for="idProducto">Id Producto:</label>
-            <input type="text" name="idProducto">
-            <label for="idCliente">Id Cliente:</label>
-            <input type="text" name="idCliente">
-
-            <label for="fecha">Fecha:</label>
-            <input type="date" name="fecha">
-            <label for="precio">Precio:</label>
-            <input type="number" name="precio" min="0">
-            <label for="descripcio">Descripcion:</label>
-            <textarea name="descripcio" cols="30" rows="10"></textarea>
+        <div id="campoEnviar" class="">
+            <input type="submit" value="Aceptar">
         </div>
-        <button type="submit" name="accion" value="Enviar">Enviar</button>
     </form>
-    <script src="../controlador/scrip.js"></script>
 
+    <div id="notificaciones">
+        <?php
+        if (isset($_GET['error'])) {
+            switch ($_GET['error']) {
+                case '1':
+                    echo '';
+                    break;
+            }
+        }
+
+        if (isset($_GET['ok'])) {
+            if ($_GET['ok'] == 'true') {
+                echo '<p>¡Todo salió bien!</p>';
+            } else {
+                echo '<p>¡Ups ha ocurrido un error!</p>';
+            }
+        }
+        ?>
+    </div>
+    <script src="../controlador/scrip.js"></script>
 </body>
 
 </html>
