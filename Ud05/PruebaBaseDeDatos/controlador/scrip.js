@@ -17,9 +17,14 @@ const formDatos = document.getElementById("formDatos");
 const camposCliente = document.getElementById("camposCliente");
 const camposPedido = document.getElementById("camposPedido");
 const camposProducto = document.getElementById("camposProducto");
+const campoEnviar = document.getElementById("campoEnviar");
+
+const campoNotificaciones = document.getElementById('notificaciones');
+
 
 const opcionTablaHidden = document.getElementById("opcionTablaHidden");
 const opcionAccionHidden = document.getElementById("opcionAccionHidden");
+
 
 
 
@@ -32,6 +37,10 @@ formConfiguracion.addEventListener("submit", function (event) {
       console.log("Formulario aceptado");
       let tabla = document.getElementById("opcionesTabla").value;
       let accion = document.getElementById("opcionesAccion").value;
+
+      campoNotificaciones.innerHTML = '';
+      campoNotificaciones. innerHTML = '<h2>Formulario Aceptado</h2>';
+
       switch (tabla) {
         case "T1":
           //Cliente
@@ -58,6 +67,8 @@ formConfiguracion.addEventListener("submit", function (event) {
     case "Cancelar":
       console.log("Formulario Cancelado");
       ocultarFormDatos();
+      campoNotificaciones.innerHTML = '';
+      campoNotificaciones. innerHTML = '<h2>Formulario cancelado</h2>';
       break;
   }
 });
@@ -101,6 +112,8 @@ function eliminarDatos(tabla) {
 
 function ocultarCamposFormulario(tabla) {
   formDatos.classList.remove("ocultar");
+  campoEnviar.classList.remove("ocultar");
+
   switch (tabla) {
     case "T1":
       console.log("modificando cliente");
@@ -124,4 +137,5 @@ function ocultarFormDatos() {
     camposCliente.classList.add("ocultar");
     camposProducto.classList.add("ocultar");
     camposPedido.classList.add("ocultar");
+    campoEnviar.classList.add("ocultar");
 }
