@@ -11,7 +11,8 @@ include '../modelo/Pedidos.php';
 
 //Ud05/PruebaBaseDeDatos/modelo/modelo.php
 
-/** Terminos
+/** 
+ * Terminos
  * T1 = Clientes
  * T2 = Pedidos
  * T3 = Productos
@@ -31,7 +32,6 @@ if ($_POST) { // Si el formulario ha sido enviado
             listarDatos($opcionTabla);
             break;
         case "A2":
-            echo '<br>En insertar datos del cliente en el controlador';
             insertarDatos($opcionTabla);
             //header('location: ../vista/vista.php');
             break;
@@ -74,9 +74,7 @@ function insertarDatos($opcionTabla): void
                 && isset($_POST['idCliente']) && isset($_POST['fecha'])
                 && isset($_POST['precio']) && isset($_POST['descripcio'])
             ) {
-                $pduc
-
-                $pedido = new Pedido()
+                $pedido = new Pedido();
                 $cliente = new Cliente($_POST['nombreCliente'], $_POST['apellidosCliente']);
                 $resultado = $cliente->insertarDatos();
                 header('location: ../vista/vista.php?ok=' . $resultado);
@@ -119,5 +117,5 @@ function eliminarDatos($opcionTabla)
 
 function depurar($Text): void
 {
-    echo '<br>' . $Text;
+    echo '<p>' . $Text . '</p>';
 }

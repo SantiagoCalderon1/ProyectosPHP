@@ -9,95 +9,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vista</title>
+    <title>Mini APP-WEB</title>
+    <link rel="stylesheet" href="../public/css/style.css">
 </head>
-
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
-
-    .ocultar {
-        display: none !important;
-    }
-
-    body {
-        width: 100%;
-        display: flex;
-        /* justify-content: center; */
-        align-items: center;
-        flex-direction: column;
-    }
-
-    #formConfiguracion {
-        background-color: gray;
-        color: white;
-
-        font-size: 20px;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        width: 400px;
-        height: 25vh;
-
-        margin: 20px 0;
-
-        border-radius: 20px;
-    }
-
-    #formConfiguracion #btns {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 10px
-    }
-
-    #formConfiguracion label,
-    #formConfiguracion select,
-    #formConfiguracion input {
-        margin: 5px 0;
-    }
-
-    #formDatos {
-        background-color: gray;
-
-        color: white;
-
-        font-size: 20px;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        width: 400px;
-        margin: 20px 0;
-
-        border-radius: 20px;
-        padding: 20px 0;
-    }
-
-    #camposCliente,
-    #camposPedido,
-    #camposProducto {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2.5px;
-    }
-
-    #campoEnviar {
-        margin: 10px;
-    }
-</style>
 
 <body>
     <div id="opciones">
-        <form action="" method="post" id="formConfiguracion">
+        <form action="../app/controllers/controller.php" method="post" id="formConfiguracion">
             <label for="opcionesTabla">Opciones de tablas:</label>
             <select name="opcionesTabla" id="opcionesTabla">
                 <option value="T1">Cliente</option>
@@ -118,6 +36,25 @@
         </form>
     </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     <div id="notificaciones">
         <?php
         if (isset($_GET['error'])) {
@@ -183,8 +120,8 @@
         </div>
     </form>
 
-    
-    <script src="../controlador/script.js"></script>
+
+    <script src="../public/js/script.js"></script>
 </body>
 
 </html>

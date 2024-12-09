@@ -1,0 +1,102 @@
+
+proyecto/
+│
+├── public/               # Archivos accesibles públicamente
+│   ├── index.php +         # Punto de entrada principal
+│   ├── css/ +              # Archivos CSS
+│   ├── js/  +              # Archivos JavaScript
+│   ├── img/              # Archivos de imágenes
+│   └── .htaccess         # Configuración para redirigir todas las solicitudes a index.php
+│
+├── app/                  # Lógica de la aplicación
+│   ├── controllers/      # Controladores
+│   │   ├── ClienteController.php
+│   │   ├── PedidoController.php
+│   │   └── ProductoController.php
+│   ├── models/           # Modelos
+│   │   ├── Cliente.php +
+│   │   ├── Pedido.php  +
+│   │   └── Producto.php +
+│   └── views/            # Vistas
+│       ├── clientes/     # Vistas relacionadas con clientes
+│       │   ├── listar.php
+│       │   ├── insertar.php
+│       │   ├── editar.php
+│       │   └── eliminar.php
+│       ├── pedidos/      # Vistas relacionadas con pedidos
+│       ├── productos/    # Vistas relacionadas con productos
+│       └── layouts/      # Plantillas comunes (header, footer, etc.)
+│           ├── header.php
+│           └── footer.php
+│
+├── config/               # Configuración del proyecto
+│   ├── database.php      # Configuración de la conexión a la base de datos
+│   └── config.php        # Configuración general
+│
+├── core/                 # Código base reutilizable
+│   ├── Router.php        # Sistema de enrutamiento
+│   ├── Controller.php    # Clase base para los controladores
+│   ├── Model.php         # Clase base para los modelos
+│   └── View.php          # Clase base para manejar las vistas
+│
+├── storage/              # Archivos generados por la aplicación
+│   ├── logs/             # Archivos de logs
+│   └── uploads/          # Archivos subidos por usuarios
+│
+└── vendor/               # Librerías externas (usando Composer)
+    └── autoload.php      # Autocargador de Composer
+ 
+
+ 
+
+ Descripción de cada carpeta 
+
+ 1.  public/ 
+- Contiene todos los recursos públicos y el archivo  index.php , que actúa como el punto de entrada de la aplicación.
+- Se configura el  .htaccess  para redirigir todas las solicitudes a este archivo y permitir el manejo centralizado de rutas.
+
+ 2.  app/ 
+-  controllers/ : Aquí van los controladores que manejan la lógica de negocio y coordinan entre el modelo y las vistas. Por ejemplo,  ClienteController.php  podría contener métodos como  listarClientes() ,  crearCliente() , etc.
+-  models/ : Los modelos son responsables de interactuar con la base de datos. Cada entidad de tu aplicación (clientes, pedidos, productos) tendrá su modelo correspondiente.
+-  views/ : Contiene las vistas, que son las responsables de mostrar la información al usuario. Se pueden organizar por entidades (clientes, pedidos, productos) y también incluir un directorio  layouts/  para elementos comunes como el encabezado y el pie de página.
+
+ 3.  config/ 
+- Almacena configuraciones importantes, como los parámetros de conexión a la base de datos y otras constantes globales.
+
+ 4.  core/ 
+- Aquí se encuentran las clases base y los componentes reutilizables del sistema:
+  -  Router.php : Gestiona las rutas y dirige las solicitudes HTTP al controlador y acción correspondientes.
+  -  Controller.php : Clase base que puede incluir métodos comunes para los controladores.
+  -  Model.php : Clase base para los modelos, que puede manejar la conexión a la base de datos y métodos CRUD genéricos.
+  -  View.php : Clase base para cargar vistas y pasar datos.
+
+ 5.  storage/ 
+- Almacena archivos generados por la aplicación, como logs y archivos subidos.
+
+ 6.  vendor/ 
+- Almacena las dependencias instaladas mediante Composer (si decides usarlo).
+
+ 
+
+ Flujo de trabajo MVC 
+1.  Punto de entrada ( public/index.php ) :
+   - Recibe todas las solicitudes HTTP.
+   - Usa el router ( core/Router.php ) para determinar qué controlador y acción deben ejecutarse.
+
+2.  Controladores ( app/controllers/ ) :
+   - Gestionan la lógica de la aplicación y llaman a los modelos para interactuar con la base de datos.
+
+3.  Modelos ( app/models/ ) :
+   - Realizan las operaciones de base de datos y devuelven los datos al controlador.
+
+4.  Vistas ( app/views/ ) :
+   - Renderizan la salida para el usuario, utilizando datos proporcionados por los controladores.
+
+ 
+
+ Consejos adicionales 
+-  Composer : Considera usar Composer para gestionar librerías externas, como un ORM (por ejemplo, Eloquent o Doctrine) o un sistema de enrutamiento (como FastRoute).
+-  Autoloading : Implementa un sistema de autoloading para cargar clases automáticamente, lo cual facilita la gestión de archivos y evita los  require  o  include  manuales.
+-  Organización modular : Si el proyecto crece, podrías agrupar los controladores, modelos y vistas por módulos en lugar de entidades.
+
+Con esta estructura, tendrás un proyecto limpio, organizado y basado en las mejores prácticas del desarrollo web en PHP. ¡Éxito con tu proyecto!
