@@ -15,18 +15,19 @@
 if (isset($_POST['opcionesTabla']) && isset($_POST['opcionesAccion'])) {
 
     $opcionesTabla = $_POST['opcionesTabla'];
+    $opcionesAccion = $_POST['opcionesAccion'];
 
     switch ($opcionesTabla) {
         case 'T1':
-            # code...
+            header('location: ../controllers/clienteController.php?Option='.$opcionesAccion);
             break;
         case 'T2':
-            # code...
+            header('location: ../controllers/pedidoController.php?Option='.$opcionesAccion);
             break;
-
         case 'T3':
-            # code...
+            header('location: ../controllers/productoController.php?Option='.$opcionesAccion);
             break;
     }
 } else {
+    # Code
 }
