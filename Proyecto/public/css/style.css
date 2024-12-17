@@ -8,13 +8,16 @@ header{
     color: #fff;
     height: 10vh;
     width: 100%;
-    
+    text-align: center;
 }
 
 main{
     background-color: #f0f0f0;
     height: 80vh;
     width: 100%;
+    display: flex;
+    justify-content: center;
+
 }
 
 #formConfiguracion {
@@ -32,7 +35,6 @@ main{
     height: 25vh;
 
     margin: 20px 0;
-
     border-radius: 20px;
 }
 
@@ -86,4 +88,6 @@ footer{
     color: white;
     width: 100%;
     height: 10vh;
+
+    text-align: center;
 }

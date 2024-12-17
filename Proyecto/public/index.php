@@ -1,5 +1,6 @@
 <?php
-
+include_once '../views/layouts/header.php';
+include_once '../views/layouts/footer.php';
 
 ?>
 <!DOCTYPE html>
@@ -13,11 +14,10 @@
 </head>
 
 <body>
-    <header>
-        <h1>Proyecto de Aplicación Web CRUD - PHP</h1>
-    </header>
+    <?php cabecera(1)?>
     <main>
-        <div id="opciones">
+        
+        <div id="formBox">
             <form action="../app/controllers/controller.php" method="post" id="formConfiguracion">
                 <label for="opcionesTabla">Opciones de tablas:</label>
                 <select name="opcionesTabla" id="opcionesTabla">
@@ -38,11 +38,8 @@
                 </div>
             </form>
         </div>
-
     </main>
-    <footer>
-        <p>Hecho por Santiago Calderon</p>
-    </footer>
+    <?php pie(1)?>
 </body>
 
 </html>

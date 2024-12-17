@@ -1,4 +1,6 @@
 <?php
+include_once '../models/Cliente.php';
+
 
 /** 
  * Terminos
@@ -14,12 +16,17 @@
 if (isset($_GET['Option'])) {
     $Option = $_GET['Option'];
     switch ($variable) {
-        case 'value':
-            # code...
+        case 'A1':
+            
             break;
-
-        default:
-            # code...
+        case 'A2':
+            
+            break;
+        case 'A3':
+            
+            break;
+        case 'A4':
+            
             break;
     }
 }
