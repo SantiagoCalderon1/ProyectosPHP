@@ -40,6 +40,12 @@ class Cliente
         return (self::CONEXION->query($sql)) ? true : false;
     }
 
+    function getAll() {
+        $sql = "SELECT * FROM clientes;";
+        $resultado = self::CONEXION->query($sql);
+        return $resultado->fetch_assoc();
+    }
+
     function getNombre(): String
     {
         return $this->nombre;

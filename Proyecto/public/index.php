@@ -16,7 +16,6 @@ include_once '../views/layouts/footer.php';
 <body>
     <?php cabecera(1)?>
     <main>
-        
         <div id="formBox">
             <form action="../app/controllers/controller.php" method="post" id="formConfiguracion">
                 <label for="opcionesTabla">Opciones de tablas:</label>
