@@ -15,6 +15,7 @@ header{
 
     text-align: center;
     font-size: 0.5rem;
+    line-height: 10vh;
 }
 
 main{
@@ -23,7 +24,6 @@ main{
     width: 100%;
     display: flex;
     justify-content: center;
-
 }
 
 #formConfiguracion {
@@ -96,4 +96,5 @@ footer{
     height: 10vh;
 
     text-align: center;
+    line-height: 10vh;
 }
