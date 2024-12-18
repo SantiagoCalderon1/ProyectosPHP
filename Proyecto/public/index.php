@@ -1,7 +1,9 @@
-<?php include '../views/layouts/header.php'; ?>
+
+
+<?php include '../app/views/layouts/cabecera.php'; ?>
 
 <main>
-    <?php include '../views/layouts/formConfiguracion.php'; ?>
+    <?php include '../app/views/layouts/formConfiguracion.php'; ?>
 </main>
 
-<?php include '../views/layouts/footer.php'; ?>
+<?php include '../app/views/layouts/footer.php'; ?>

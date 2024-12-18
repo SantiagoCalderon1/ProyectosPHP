@@ -1,6 +1,6 @@
 <div id="formBox">
     <form action="../app/controllers/controller.php" method="post" id="formConfiguracion">
-        <label for="opcionesTabla">Opciones de tablas:</label>
+        <label for="opcionesTabla">Opciones  de tablas:</label>
         <select name="opcionesTabla" id="opcionesTabla">
             <option value="T1">Cliente</option>
             <option value="T2">Pedido</option>

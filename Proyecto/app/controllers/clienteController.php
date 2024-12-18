@@ -14,19 +14,32 @@ include_once '../models/Cliente.php';
  * A4 = Eliminar Datos
  */
 if (isset($_GET['Option'])) {
-    $Option = $_GET['Option'];
-    switch ($variable) {
+    echo $_GET['Option'];
+    switch ($_GET['Option']) {
         case 'A1':
             
+            header('location: ../views/clientes/clienteListar.php');
             break;
         case 'A2':
-            
+            header('location: /views/clientes/clienteInsertar.php');
             break;
         case 'A3':
-            
+            header('location: /views/clientes/clienteEditar.php');
             break;
         case 'A4':
-            
+            header('location: /views/clientes/clienteEliminar.php');
             break;
     }
 }
+
+//A1
+if (isset($_POST['aaaa'])) {
+    $clientes = Cliente::getAll();
+    
+}
+
+//A2
+
+//A3
+
+//A4

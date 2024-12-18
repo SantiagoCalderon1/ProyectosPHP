@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -10,5 +11,5 @@
 
 <body>
     <header>
-        <h1>Proyecto de Aplicación Web CRUD - PHP</h1>
+        <h1><?php echo $titleHeader ?? 'Proyecto de Aplicación Web CRUD - PHP'; ?></h1>
     </header>
