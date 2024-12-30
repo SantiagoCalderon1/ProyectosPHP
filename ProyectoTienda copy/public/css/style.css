@@ -23,16 +23,41 @@ main{
     height: 80vh;
     width: 100%;
     display: flex;
-    justify-content: center;
-    flex-direction: row;
+    align-items: center;
+    flex-direction: column;
 }
 
-#desplegableCliente{
-    width: 50%;
-    height: 20vh;
-    overflow: hidden;
+#formDesplegableProducto{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-/* 
+
+
+#desplegableProducto{
+    width: 30%;
+    height: 5vh;
+
+    font-size: 1.25rem;
+    text-align: center;
+    margin-top: 5vh;
+}
+
+#listadoPedidos{
+    width: 80%;
+    height: 30vh;
+    margin-top: 10vh;
+    overflow-y: hidden;
+    border: 1px solid black;
+    text-align: center;
+}
+
+h2{
+    font-size: 1.25rem;
+    margin-top: 20vh;
+}
+
 #formConfiguracion {
     background-color: gray;
     color: white;
@@ -94,7 +119,7 @@ main{
 
 #campoEnviar {
     margin: 10px;
-} */
+} 
 
 footer{
     background-color: #333;

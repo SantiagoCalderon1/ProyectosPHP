@@ -1,6 +1,5 @@
 <?php
-include_once '../models/Cliente.php';
-
+include '../app/models/Cliente.php';
 
 /** 
  * Terminos
@@ -32,11 +31,9 @@ if (isset($_GET['Option'])) {
     }
 }
 
-//A1
-if (isset($_POST['aaaa'])) {
-    $clientes = Cliente::getAll();
+//A1 Esta variable la usaré en la vista
+$clientes = Cliente::getAll();
     
-}
 
 //A2
 
