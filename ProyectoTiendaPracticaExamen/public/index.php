@@ -1,10 +1,10 @@
 <?php
-include '../app/views/layouts/cabecera.php';
+include_once '../app/views/layouts/cabecera.php';
 ?>
 
 <main>
     <?php
-    include '../app/views/layouts/formAccess.php';
+    include_once '../app/views/layouts/formAccess.php';
 
     if (isset($_GET['authenticationError']) && $_GET['authenticationError'] == 1) {
         echo '<h2>Credenciales incorrrecta, por favor vuelve a intentarlo.</h2>';
@@ -17,5 +17,5 @@ include '../app/views/layouts/cabecera.php';
 </main>
 
 <?php
-include '../app/views/layouts/pie.php';
+include_once '../app/views/layouts/pie.php';
 ?>

@@ -1,8 +1,8 @@
 <?php
-include '../models/client.php';
-include '../models/order.php';
-include '../models/product.php';
-include '../../config/destroySesion.php';
+include_once '../models/client.php';
+include_once '../models/order.php';
+include_once '../models/product.php';
+include_once '../../config/destroySesion.php';
 
 
 session_start();
@@ -13,18 +13,17 @@ if (isset($_GET['option']) and $_GET['option'] != '') {
             $clients = client::getAllData();
             include '../views/viewClient.php';
             break;
-
         case 'orders':
-            # code...
+            $orders = order::getAlldata();
+            include '../views/viewOrder.php';
             break;
-
         case 'products':
-            # code...
+            $products = product::getAlldata();
+            include '../views/viewProduct.php';
             break;
         case 'exit':
             session_destroy();
             header('Location: ../../public/index.php?closedSession=1');
-
             break;
 
         default:
@@ -32,3 +31,5 @@ if (isset($_GET['option']) and $_GET['option'] != '') {
             break;
     }
 }
+
+

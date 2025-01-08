@@ -1,10 +1,10 @@
 <?php
-include '../../config/ConexionAccessControlList.php';
+include_once '../../config/ConexionAccessControlList.php';
 class user
 {
     public function __construct() {}
 
-    static function checkLogin($username, $password): array
+    static function checkLogin($username, $password)
     {
         $conexion = openConexionACL() ;
         $result = $conexion->query("SELECT * FROM Users WHERE username='{$username}' and password='{$password}';");
