@@ -28,7 +28,7 @@ if (isset($_GET['option']) and $_GET['option'] != '') {
             header('Location: ../../public/index.php?closedSession=1');
             break;
         default:
-            # code...
+            header('Location: ../../public/index.php?closedSession=1');
             break;
     }
 }
