@@ -22,11 +22,11 @@ if (isset($_GET['option']) and $_GET['option'] != '') {
             # code...
             break;
         case 'exit':
-            session_destroy();
-            header('Location: ../../public/index.php?closedSession=1');
-
+            if ($_SESSION['rememberme'] == 'on') {
+                header('Location: ../../public/index.php?closedSession=1');
+            }
+            closeSession();
             break;
-
         default:
             # code...
             break;
