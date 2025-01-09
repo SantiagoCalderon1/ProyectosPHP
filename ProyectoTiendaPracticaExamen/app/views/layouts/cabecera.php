@@ -13,6 +13,14 @@
             <h1>Practica Proyecto PHP</h1>
         </div>
         <div class="container-options">
-            <?php include_once 'optionsTables.php'; ?>
+            <div class="option">
+                <button onclick="window.location.href='../controllers/controller.php?option=clients'">Clientes</button>
+            </div>
+            <div class="option">
+                <button onclick="window.location.href='../controllers/controller.php?option=orders'">Pedidos</button>
+            </div>
+            <div class="option">
+                <button onclick="window.location.href='../controllers/controller.php?option=products'">Productos</button>
+            </div>
         </div>
     </header>

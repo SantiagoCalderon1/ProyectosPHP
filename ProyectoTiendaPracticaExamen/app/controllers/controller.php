@@ -1,7 +1,4 @@
 <?php
-include_once '../models/client.php';
-include_once '../models/order.php';
-include_once '../models/product.php';
 include_once '../../config/destroySesion.php';
 
 
@@ -10,16 +7,13 @@ session_start();
 if (isset($_GET['option']) and $_GET['option'] != '') {
     switch ($_GET['option']) {
         case 'clients':
-            $clients = client::getAllData();
-            include '../views/viewClient.php';
+            header('Location: controllerClient.php');
             break;
         case 'orders':
-            $orders = order::getAlldata();
-            include '../views/viewOrder.php';
+            header('Location: controllerOrder.php');
             break;
         case 'products':
-            $products = product::getAlldata();
-            include '../views/viewProduct.php';
+            header('Location: controllerProduct.php');
             break;
         case 'exit':
             if (!$_SESSION['rememberme']) {
@@ -32,9 +26,4 @@ if (isset($_GET['option']) and $_GET['option'] != '') {
             break;
     }
 }
-
-if (isset($_GET['canceledForm'])) {
-    # code...
-}
-
 
