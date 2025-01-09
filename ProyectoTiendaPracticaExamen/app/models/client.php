@@ -1,18 +1,18 @@
 <?php
-include '../../config/ConexionTienda.php';
+include_once '../../config/ConexionTienda.php';
 
 class client
 {
 
     public function __construct(
-        int $clientId = 0,
-        string $clientName = '',
-        string $clientSurname = ''
+        private int $clientId = 0,
+        private string $clientName = '',
+        private string $clientSurname = ''
     ) {
         //$this->var = $var;
     }
 
-    static public function getAllData(): array
+    static public function getAllData(): ?array
     {
         $conexion = openConexionTienda();
         $result = $conexion->query("SELECT * FROM clientes ORDER BY clienteId ASC;");
@@ -26,32 +26,32 @@ class client
         }
     }
 
-    public function insertNewClient(string $newUserName, string $newUserSurname): bool
+    public function insertClient(client $newUser): bool
     {
-        if (empty($newNameUser) && empty($newSurnameUser)) {
-            throw new InvalidArgumentException('Los campos nombre y aperllido no pueden estar vacios.');
+        if (empty($newUser)) {
+            throw new InvalidArgumentException('Error insertando un cliente, verifique los datos.');
         }
         $conexion = openConexionTienda();
-        $result = $conexion->query("INSERT INTO clientes VALUES ('{$newUserName}','{$newUserSurname}');");
+        $result = $conexion->query("INSERT INTO clientes VALUES ('{$newUser->clientName}','{$newUser->clientSurname}');");
         closeConexionTienda($conexion);
         return $result;
     }
 
-    public function updateClient(int $clientId, string $newNameUser, string $newSurnameUser = ''): bool
+    public function updateClient(client $updateUser, int $clientId): bool
     {
-        if (empty($newNameUser) && empty($newSurnameUser)) {
-            throw new InvalidArgumentException('Los campos nombre y apellido no pueden estar vacios.');
+        if (empty($updateUser)) {
+            throw new InvalidArgumentException('Error insertando un cliente, verifique los datos.');
         }
         $conexion = openConexionTienda();
-        $result = $conexion->query("UPDATE clientes SET nombre='{$newNameUser}', apellido='{$newSurnameUser}' WHERE clienteId={$clientId};");
+        $result = $conexion->query("UPDATE clientes SET nombre='{$updateUser->clientName}', apellido='{$updateUser->clientSurname}' WHERE clienteId={$clientId};");
         closeConexionTienda($conexion);
         return $result;
     }
 
     public function deleteClient(int $clientId): bool
     {
-        if (empty($clientId)) {
-            throw new InvalidArgumentException('El campo id cliente no puede estar vacío.');
+        if ($clientId < 0) {
+            throw new InvalidArgumentException('El campo id cliente no puede ser negativo.');
         }
         $conexion = openConexionTienda();
         // no se podrá eliminar clietes que previamente hayan hecho un pedido, es para cuidar la consistencia de los datos
@@ -60,8 +60,8 @@ class client
         return $result;
     }
 
-    public function selectClient(int $clientId) : array {
-        if (empty($clientId)) {
+    public function selectClient(int $clientId) : ?array {
+        if ($clientId < 0) {
             throw new InvalidArgumentException('El campo Id cliente no puede estar vacío.');            
         }
         $conexion = openConexionTienda();

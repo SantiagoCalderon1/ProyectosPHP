@@ -1,5 +1,5 @@
 <?php
-include 'cabecera.php';
+include_once 'cabecera.php';
 ?>
 
 <main>
@@ -7,13 +7,13 @@ include 'cabecera.php';
         <button onclick="window.location.href='../../controllers/controller.php?option=clients'">Clientes</button>
     </div>
     <div class="option">
-        <button onclick="window.location.href='../controllers/controller.php?option=orders'">Pedidos</button>
+        <button onclick="window.location.href='../../controllers/controller.php?option=orders'">Pedidos</button>
     </div>
     <div class="option">
-        <button onclick="window.location.href='../controllers/controller.php?option=products'">Productos</button>
+        <button onclick="window.location.href='../../controllers/controller.php?option=products'">Productos</button>
     </div>
 </main>
 
 <?php
-include 'pie.php';
+include_once 'pie.php';
 ?>
