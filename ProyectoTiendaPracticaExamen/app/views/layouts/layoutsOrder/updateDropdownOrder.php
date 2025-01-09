@@ -8,7 +8,7 @@
         <div class="input">
             <label for="selectProductoId">Id del Producto: </label>
             <select name="selectProductoId">
-                <option value="">Seleccione un producto</option>
+                <option value="">Seleccionqe un producto</option>
                 <?php foreach ($products as $product) {
                     echo '<option value="' . $product['productoId'] . '">' . $product['productoId'] . ' | ' . $product['nombre'] . '</option>';
                 }
