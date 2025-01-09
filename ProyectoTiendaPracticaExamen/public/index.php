@@ -25,6 +25,12 @@
             echo '<h2>Sesión cerrada correctamente.</h2>';
         }
         ?>
+
+        <?php
+        if (isset($_GET['forgotPassword']) && $_GET['forgotPassword'] == 1) {
+            echo '<h2>Esto aún no funciona.</h2>';
+        }
+        ?>
     </main>
     <?php
     include_once '../app/views/layouts/pie.php';

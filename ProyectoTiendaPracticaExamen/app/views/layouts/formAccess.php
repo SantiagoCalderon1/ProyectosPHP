@@ -2,7 +2,7 @@
 session_start();
 ?>
 
-<div class="form-box">
+<div class="formAccess-box">
     <form action="../app/controllers/controllerAccess.php" method="post">
         <div class="input">
             <label for="username">Username: </label>
@@ -20,6 +20,7 @@ session_start();
             <label for="rememberme">rememberme</label>
         </div>
         <div class="input">
+            
             <input type="submit" value="Iniciar Sesion">
         </div>
     </form>

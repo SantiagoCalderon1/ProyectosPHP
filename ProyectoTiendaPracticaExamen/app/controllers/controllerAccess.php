@@ -6,7 +6,7 @@ session_start();
 
 if (isset($_POST['username'], $_POST['password']) && $_POST['username'] != '' && $_POST['password']) {
     $user = user::checkLogin($_POST['username'], $_POST['password']);
-
+    
     if ($user) {
         if (isset($_POST['rememberme']) && $_POST['rememberme'] == 'on') {
             $_SESSION['user'] = $user[0];
@@ -24,7 +24,7 @@ if (isset($_POST['username'], $_POST['password']) && $_POST['username'] != '' &&
 }
 
 if (isset($_GET['forgotPassword']) && $_GET['forgotPassword'] == '1') {
-    # code forgot password
+    header('Location: ../../public/index.php?forgotPassword=1');
 }
 
 
