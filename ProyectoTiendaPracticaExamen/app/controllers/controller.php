@@ -22,15 +22,13 @@ if (isset($_GET['option']) and $_GET['option'] != '') {
             include '../views/viewProduct.php';
             break;
         case 'exit':
-            if ($_SESSION['rememberme'] == 'on') {
-                header('Location: ../../public/index.php?closedSession=1');
+            if (!$_SESSION['rememberme']) {
+                closeSession();
             }
-            closeSession();
+            header('Location: ../../public/index.php?closedSession=1');
             break;
         default:
             # code...
             break;
     }
 }
-
-

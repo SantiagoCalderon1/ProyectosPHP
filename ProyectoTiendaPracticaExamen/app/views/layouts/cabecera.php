@@ -7,6 +7,8 @@
 </head>
 <body>
     <header>
-        <h1>Practica Proyecto PHP</h1>
-    </header>
+        <div class="container-title">
+            <h1>Practica Proyecto PHP</h1>
+        </div>
+
 

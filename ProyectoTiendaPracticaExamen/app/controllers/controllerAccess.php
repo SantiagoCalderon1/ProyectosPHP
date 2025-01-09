@@ -2,21 +2,31 @@
 include_once '../models/user.php';
 include_once '../../config/destroySesion.php';
 
+session_start();
 
 if (isset($_POST['username'], $_POST['password']) && $_POST['username'] != '' && $_POST['password']) {
-    //if (user::checkLogin($_POST['username'], $_POST['password'])) {
-    $_SESSION['user'] = $user = user::checkLogin($_POST['username'], $_POST['password']);
+    $user = user::checkLogin($_POST['username'], $_POST['password']);
+
     if ($user) {
-        session_start();
-        $_SESSION['rememberme'] = $_POST['rememberme'] ?? false;
+        if (isset($_POST['rememberme']) && $_POST['rememberme'] == 'on') {
+            $_SESSION['user'] = $user[0];
+            $_SESSION['rememberme'] = true;
+        }else {
+            $_SESSION['rememberme'] = false;
+        }
         header('Location: ../views/layouts/optionsTables.php');
         exit;
     }else{
         header('Location: ../../public/index.php?authenticationError=1');
         closeSession();
-        header('Location : ../../public/controler.php?authenticationError=1');
         exit;
     }
 }
+
+if (isset($_GET['forgotPassword']) && $_GET['forgotPassword'] == '1') {
+    # code forgot password
+}
+
+
 
 
