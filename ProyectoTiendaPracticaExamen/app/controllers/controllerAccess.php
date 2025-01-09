@@ -14,7 +14,7 @@ if (isset($_POST['username'], $_POST['password']) && $_POST['username'] != '' &&
         }else {
             $_SESSION['rememberme'] = false;
         }
-        header('Location: ../views/layouts/optionsTables.php');
+        header('Location: controller.php?option=clients');
         exit;
     }else{
         header('Location: ../../public/index.php?authenticationError=1');
