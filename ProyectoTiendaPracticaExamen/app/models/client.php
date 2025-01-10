@@ -12,10 +12,10 @@ class client
         //$this->var = $var;
     }
 
-    static public function getAllData(): ?array
+    static public function getAllData($orderBy = 'clienteId'): ?array
     {
         $conexion = openConexionTienda();
-        $result = $conexion->query("SELECT * FROM clientes ORDER BY clienteId ASC;");
+        $result = $conexion->query("SELECT * FROM clientes ORDER BY {$orderBy} ASC;");
         if ($result->num_rows >= 1) {
             $data = $result->fetch_all(MYSQLI_ASSOC);
             closeConexionTienda($conexion);
@@ -37,13 +37,21 @@ class client
         return $result;
     }
 
-    public function updateClient(client $updateUser, int $clientId): bool
+    // static public function updateClient(client $updateClient, int $clientId): bool
+    // {
+    //     if (empty($updateClient)) {
+    //         throw new InvalidArgumentException('Error insertando un cliente, verifique los datos.');
+    //     }
+    //     $conexion = openConexionTienda();
+    //     $result = $conexion->query("UPDATE clientes SET nombre='{$updateClient->clientName}', apellidos='{$updateClient->clientSurname}' WHERE clienteId={$clientId};");
+    //     closeConexionTienda($conexion);
+    //     return $result;
+    // }
+
+    public function updateClient(): bool
     {
-        if (empty($updateUser)) {
-            throw new InvalidArgumentException('Error insertando un cliente, verifique los datos.');
-        }
         $conexion = openConexionTienda();
-        $result = $conexion->query("UPDATE clientes SET nombre='{$updateUser->clientName}', apellido='{$updateUser->clientSurname}' WHERE clienteId={$clientId};");
+        $result = $conexion->query("UPDATE clientes SET nombre='{$this->clientName}', apellidos='{$this->clientSurname}' WHERE clienteId={$this->clientId};");
         closeConexionTienda($conexion);
         return $result;
     }
@@ -60,7 +68,7 @@ class client
         return $result;
     }
 
-    public function selectClient(int $clientId) : ?array {
+    static public function selectClient(int $clientId) : ?array {
         if ($clientId < 0) {
             throw new InvalidArgumentException('El campo Id cliente no puede estar vacío.');            
         }
