@@ -22,7 +22,7 @@
                 <?php foreach ($clients as $client) {
                     echo
                     '<tr>
-                    <td><input type="checkbox" class="selectClient" name="checkBoxClientId[]" value="' . $client['clienteId'] . '"></td>
+                    <td><input type="checkbox" class="selectClient" name="checkBoxIdClient[]" value="' . $client['clienteId'] . '" ></td>
                     <td>' . $client['clienteId'] . '</td>
                     <td>' . $client['nombre'] . '</td>
                     <td>' . $client['apellidos'] . '</td>
