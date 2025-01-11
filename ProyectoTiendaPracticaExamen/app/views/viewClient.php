@@ -13,8 +13,10 @@ include_once '../views/layouts/cabecera.php';
     </div>
 </main>
 
+
 <?php
 include_once '../views/layouts/pie.php';
+var_dump($selectedClients[0]);
 ?>
 
 <script src="../../public/js/script.js"></script>

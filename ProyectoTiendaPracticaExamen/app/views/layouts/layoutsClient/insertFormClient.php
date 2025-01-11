@@ -1,4 +1,4 @@
-<button onclick="submitForm('form-listClients')" id="btn-insert">INSERTAR</button>
+<button id="btn-insert">INSERTAR</button>
 <div class="formInsert-box ocultar">
     <form action="../controllers/controllerClient.php" method="post" id="formInsertClient">
         <input type="hidden" name="action" value="insertForm" id="formAction">

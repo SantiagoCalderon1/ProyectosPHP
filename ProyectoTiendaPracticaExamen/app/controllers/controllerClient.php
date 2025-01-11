@@ -2,7 +2,8 @@
 include_once '../models/client.php';
 session_start();
 
-$selectedClients = [];
+$selectedClients = $_SESSION['selectedClients'] ?? [];
+$orderBy = '';
 $clients = client::getAllData();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -10,15 +11,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     switch ($action) {
         case 'form-listClients':
-            $selectedClients = [];
             $selectedClients = getSelectedClients($_POST, $clients);
+            $_SESSION['selectedClients'] = $selectedClients; // Guardar en sesión
+            // Crear un array con los ids de clientes seleccionados
+            $selectedClientsIds = array_map(function ($item) {
+                return $item['client']['clienteId'];
+            }, $selectedClients);
+            break;
+        case 'resetSelectionClients':
+            $_SESSION['selectedClients'] = $selectedClients = [];
             break;
         case 'form-orderBy':
             $clients = orderClientsBy($_POST);
             break;
         case 'updateForm':
-
             updateForm($_POST);
+            if (count($selectedClients) > 0) {
+                array_shift($selectedClients);
+            }
+            $_SESSION['selectedClients'] = $selectedClients;
             break;
         case 'insertFrom':
             insertForm($_POST);
@@ -39,40 +50,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 include '../views/viewClient.php';
 
 // Función para obtener clientes seleccionados con el checkbox
-function getSelectedClients($formData, $clients): array
-{
-    $selectedClients = [];
-    if (isset($formData['checkBoxClientId']) && is_array($formData['checkBoxClientId'])) {
-        $selectedClientsId = $formData['checkBoxClientId'];
-        foreach ($selectedClientsId as $selectedClientId) {
-            foreach ($clients as $client) {
-                if ($client['clienteId'] == $selectedClientId) {
-                    $selectedClients[] = $client;
-                }
-            }
-        }
-    } else {
-        echo "Datos incompletos.";
-    }
-    return $selectedClients;
-}
-
-// Función para obtener clientes seleccionados con el checkbox
-function getSelectedClients($formData, $clients): array
+function getSelectedClients($formData, $clients): ?array
 {
     $checkBoxes = [];
     if (isset($formData['checkBoxIdClient']) && is_array($formData['checkBoxIdClient'])) {
-        $selectedClientsId = $formData['checkBoxIdClient'];
-        foreach ($selectedClientsId as $selectedClientId) {
+        foreach ($formData['checkBoxIdClient'] as $selectedClientId) {
             foreach ($clients as $client) {
                 if ($client['clienteId'] == $selectedClientId) {
-                    $checkBoxes['client'] = $client;
-                    $checkBoxes['isChecked'] = true;
+                    $checkBoxes[] = ['client' => $client];
                 }
             }
         }
-    } else {
-        echo "Datos incompletos.";
     }
     return $checkBoxes;
 }
@@ -100,10 +88,11 @@ function orderClientsBy($formData): ?array
     return $clients;
 }
 
-
 function updateForm($formData)
 {
     if (isset($formData['clientId'], $formData['name'], $formData['surname'])) {
+
+
         return client::updateClient(new client($formData['clientId'], $formData['name'], $formData['surname']));
     }
     return false;

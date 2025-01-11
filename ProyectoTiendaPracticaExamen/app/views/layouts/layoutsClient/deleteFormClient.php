@@ -1,4 +1,4 @@
-<button onclick="submitForm('form-listClients')" id="btn-delete">ELIMINAR</button>
+<button id="btn-delete">ELIMINAR</button>
 <div class="formUpdate-box ocultar">
     <form action="../controllers/controllerClient.php" method="post" id="formDeleteClient">
         <input type="hidden" name="action" value="deleteForm" id="formAction">
