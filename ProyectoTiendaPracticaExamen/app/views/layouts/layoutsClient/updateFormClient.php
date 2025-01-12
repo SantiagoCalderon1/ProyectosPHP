@@ -1,7 +1,7 @@
 <button id="btn-update">ACTUALIZAR</button>
 
 <div class="formUpdate-box ocultar">
-    <form action="../controllers/controllerClient.php" method="post" id="formUpdateClient">
+    <form action="../controllers/controllerClient.php" method="post" id="formUpdateClient" onsubmit="handleSubmitAndSendAnotherForm(event)">
         <input type="hidden" name="action" value="updateForm" id="formAction">
 
         <input type="hidden" name="clientId"  value="<?php  echo htmlspecialchars($selectedClients[0]['client']['clienteId'] ?? '') ?>">
@@ -13,15 +13,15 @@
 
         <div class="input">
             <label for="name">Nombre del Cliente: </label>
-            <input type="text" name="name" id="name" value="<?php echo htmlspecialchars($selectedClients[0]['client']['nombre'] ?? '') ?>">
+            <input type="text" name="name" id="name" value="<?php echo htmlspecialchars($selectedClients[0]['client']['nombre'] ?? '') ?>" required>
         </div>
         <div class="input">
             <label for="surname">Apellidos del Cliente: </label>
-            <input type="text" name="surname" id="surname" value="<?php echo htmlspecialchars($selectedClients[0]['client']['apellidos'] ?? '') ?>">
+            <input type="text" name="surname" id="surname" value="<?php echo htmlspecialchars($selectedClients[0]['client']['apellidos'] ?? '') ?>" required>
         </div>
 
         <div class="input">
-            <input type="submit" value="Aceptar">
+            <input type="submit" value="Aceptar" >
             <button onclick="window.location.href='../app/controllers/controllerClient.php?canceledForm'">
                 Cancelar
             </button>

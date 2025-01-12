@@ -11,8 +11,9 @@ class client
         //$this->var = $var;
     }
 
-    static public function getAllData($orderBy = 'clienteId'): ?array
+    static public function getAllData($orderBy): ?array
     {
+        $orderBy = $orderBy !== '' ? $orderBy : 'clienteId';
         $conexion = openConexionTienda();
         $result = $conexion->query("SELECT * FROM clientes ORDER BY {$orderBy} ASC;");
         if ($result->num_rows >= 1) {
@@ -27,11 +28,11 @@ class client
 
     static public function insertClient(client $insertClient): bool
     {
-        if (empty($updateClient)) {
+        if (empty($insertClient)) {
             throw new InvalidArgumentException('Error insertando un cliente, verifique los datos.');
         }
         $conexion = openConexionTienda();
-        $result = $conexion->query("INSERT INTO clientes VALUES ('{$insertClient->clientName}','{$insertClient->clientSurname}');");
+        $result = $conexion->query("INSERT INTO clientes (nombre, apellidos) VALUES ('{$insertClient->clientName}','{$insertClient->clientSurname}');");
         closeConexionTienda($conexion);
         return $result;
     }
@@ -71,8 +72,8 @@ class client
             $result = $conexion->query("DELETE FROM clientes WHERE clienteId={$clientId};");
             return $result;
         } catch (Exception $e) {
-            // Captura cualquier excepción y muestra un mensaje de error.
-            error_log("Error: " . $e->getMessage());
+            // Imprimir el mensaje de error en la consola del navegador
+            echo "<script>console.log('Error: " . addslashes($e->getMessage()) . "');</script>";
             return false;
         } finally {
             //siempre cerraremos la conexion
