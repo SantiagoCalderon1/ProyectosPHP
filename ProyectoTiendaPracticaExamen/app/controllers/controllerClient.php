@@ -7,20 +7,14 @@ $orderBy = $_SESSION['orderBy'] ?? ''; // Recuperar el orderBy de la sesión
 $orderByFormat = '';
 $clients = client::getAllData($orderBy); // Aplicar el orden al cargar los clientes
 
+$depure = '';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
 
     switch ($action) {
         case 'form-listClients':
-            $selectedClients = getSelectedClients($_POST, $clients);
-            $_SESSION['selectedClients'] = $selectedClients; // Guardar en sesión
-            // Crear un array con los ids de clientes seleccionados
-            $selectedClientsIds = array_map(function ($item) {
-                return $item['client']['clienteId'];
-            }, $selectedClients);
-            break;
-        case 'resetSelectionClients':
-            $_SESSION['selectedClients'] = $selectedClients = [];
+            $_SESSION['selectedClients'] = $selectedClients = getSelectedClients($_POST, $clients);
             break;
         case 'form-orderBy':
             $_SESSION['orderBy'] = $orderBy = $_POST['orderBy'] ?? ''; // Obtener el nuevo orden
@@ -36,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             break;
         case 'insertFrom':
             insertForm($_POST);
+            reloadViewClient();
             break;
         case 'deleteForm':
             deleteForm($_POST);
@@ -52,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    // Lógica para manejo GET, si es necesario
+    $action = $_GET['option'];
 }
 
 include '../views/viewClient.php';
@@ -82,7 +77,8 @@ function getSelectedClients($formData, $clients): ?array
 function updateForm($formData)
 {
     if (isset($formData['clientId'], $formData['name'], $formData['surname'])) {
-        return client::updateClient(new client($formData['clientId'], $formData['name'], $formData['surname']));
+        $updateClient = new client($formData['clientId'], $formData['name'], $formData['surname']);
+        return $updateClient->updateClient();
     }
     return false;
 }
@@ -93,8 +89,8 @@ function insertForm($formData)
     if (isset($formData['name'], $formData['surname'])) {
         $name = $formData['name'];
         $surname = $formData['surname'];
-        if (!empty($name) && !empty($name)) {
-            return client::insertClient(new client(0, $formData['name'], $formData['surname']));
+        if (!empty($name) && !empty($surname)) {
+            return client::insertClient(new client('', $name, $surname));
         }
     }
     return false;
@@ -103,7 +99,10 @@ function insertForm($formData)
 function deleteForm($formData)
 {
     if (isset($formData['clientId'])) {
-        return client::deleteClient($formData['clientId']);
+        $clientId = $formData['clientId'];
+        if (!empty($clientId)) {
+            return client::deleteClient($clientId);
+        }
     }
     return false;
 }

@@ -4,7 +4,7 @@ include_once '../../config/ConexionTienda.php';
 class client
 {
     public function __construct(
-        private int $clientId = 0,
+        private string $clientId = '',
         private string $clientName = '',
         private string $clientSurname = ''
     ) {
@@ -37,15 +37,23 @@ class client
         return $result;
     }
 
-    static public function updateClient(client $updateClient): bool
+    public function updateClient(): bool
     {
-        if (empty($updateClient)) {
-            throw new InvalidArgumentException('Error insertando un cliente, verifique los datos.');
+        //if (empty($updateClient)) {
+        //  throw new InvalidArgumentException('Error insertando un cliente, verifique los datos.');
+        //}
+        try {
+            $conexion = openConexionTienda();
+            $result = $conexion->query("UPDATE clientes SET nombre='{$this->clientName}', apellidos='{$this->clientSurname}' WHERE clienteId={$this->clientId};");
+            return $result;
+        } catch (Exception $e) {
+            // Imprimir el mensaje de error en la consola del navegador
+            echo "<script>console.log('Error: " . addslashes($e->getMessage()) . "');</script>";
+            return false;
+        } finally {
+            //siempre cerraremos la conexion
+            closeConexionTienda($conexion);
         }
-        $conexion = openConexionTienda();
-        $result = $conexion->query("UPDATE clientes SET nombre='{$updateClient->clientName}', apellidos='{$updateClient->clientSurname}' WHERE clienteId={$updateClient->clientId};");
-        closeConexionTienda($conexion);
-        return $result;
     }
 
     // public function updateClient(): bool

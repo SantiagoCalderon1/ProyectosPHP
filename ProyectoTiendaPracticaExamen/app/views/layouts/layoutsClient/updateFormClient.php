@@ -1,9 +1,8 @@
 <button id="btn-update">ACTUALIZAR</button>
 
 <div class="formUpdate-box ocultar">
-    <form action="../controllers/controllerClient.php" method="post" id="formUpdateClient" onsubmit="handleSubmitAndSendAnotherForm(event)">
+    <form action="../controllers/controllerClient.php" method="post" id="formUpdateClient" >
         <input type="hidden" name="action" value="updateForm" id="formAction">
-
         <input type="hidden" name="clientId"  value="<?php  echo htmlspecialchars($selectedClients[0]['client']['clienteId'] ?? '') ?>">
 
         <div class="input">

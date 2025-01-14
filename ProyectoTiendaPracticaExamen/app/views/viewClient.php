@@ -16,6 +16,8 @@ include_once '../views/layouts/cabecera.php';
 
 <?php
 include_once '../views/layouts/pie.php';
+var_dump($depure);
 ?>
+
 
 <script src="../../public/js/script.js"></script>

@@ -2,7 +2,7 @@
 // Recuperar los valores de la sesión
 $selectedClientsIds = array_map(function ($item) {
     return $item['client']['clienteId'];
-}, $_SESSION['selectedClients'] ?? []);
+}, $selectedClients);
 ?>
 <section class="container-listClients">
     <div class="select-all">

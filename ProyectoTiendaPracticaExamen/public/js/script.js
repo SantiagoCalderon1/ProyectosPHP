@@ -13,9 +13,3 @@ function unselectAll() {
         checkbox.checked = false;
     }); 
 }
-
-function handleSubmitAndSendAnotherForm(event) {
-    event.preventDefault();
-    submitForm('formUpdateClient');
-    submitForm('form-listClients');
-}
