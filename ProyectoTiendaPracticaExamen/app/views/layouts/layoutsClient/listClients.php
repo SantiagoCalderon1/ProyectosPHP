@@ -6,10 +6,10 @@ $selectedClientsIds = array_map(function ($item) {
 ?>
 <section class="container-listClients">
     <div class="select-all">
-        <button class="btn" onclick="selectAll(); submitForm('form-listClients')">Seleccionar Todo</button>
+        <button class="btn" onclick="selectAll('selectClient'); submitForm('form-listClients')">Seleccionar Todo</button>
     </div>
     <div class="unselect-all">
-        <button class="btn" onclick="unselectAll(); submitForm('form-listClients')">Deseleccionar Todo</button>
+        <button class="btn" onclick="unselectAll('selectClient'); submitForm('form-listClients')">Deseleccionar Todo</button>
     </div>
     <div class="box-orderBy">
         <form action="../controllers/controllerClient.php" method="post" id="form-orderBy">

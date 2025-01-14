@@ -6,7 +6,7 @@
 
         <div class="textoForm">
             <p>¿Estás seguro que deseas eliminar el cliente <span id=""><?php echo htmlspecialchars($selectedClients[0]['client']['nombre'] ?? '') 
-            . ' ' . htmlspecialchars($selectedClients[0]['client']['apellidos'] ?? '') ?></span> con id <span><?php echo htmlspecialchars($selectedClients[0]['client']['clienteId'] ?? '') ?></span>"</p>
+            . ' ' . htmlspecialchars($selectedClients[0]['client']['apellidos'] ?? '') ?></span> con id <span><?php echo htmlspecialchars($selectedClients[0]['client']['clienteId'] ?? '') ?></span>?</p>
         </div>
         <div class="input">
             <input type="submit" value="Aceptar">

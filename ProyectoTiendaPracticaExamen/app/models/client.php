@@ -39,9 +39,6 @@ class client
 
     public function updateClient(): bool
     {
-        //if (empty($updateClient)) {
-        //  throw new InvalidArgumentException('Error insertando un cliente, verifique los datos.');
-        //}
         try {
             $conexion = openConexionTienda();
             $result = $conexion->query("UPDATE clientes SET nombre='{$this->clientName}', apellidos='{$this->clientSurname}' WHERE clienteId={$this->clientId};");

@@ -5,7 +5,7 @@ include_once '../../config/ConexionTienda.php';
 class product
 {
     public function __construct(
-        private int $productId = 0,
+        private string $productId = '',
         private string $name = '',
         private float $price = 0.0,
         private int $quantity = 0,
@@ -14,10 +14,11 @@ class product
         //$this->var = $var;
     }
 
-    static public function getAlldata(): array
+    static public function getAlldata($orderBy): array
     {
+        $orderBy = $orderBy !== '' ? $orderBy : 'productoId';
         $conexion = openConexionTienda();
-        $result = $conexion->query("SELECT * FROM productos product ORDER BY productoId ASC;");
+        $result = $conexion->query("SELECT * FROM productos ORDER BY {$orderBy} ASC;");
         if ($result->num_rows >= 1) {
             $data = $result->fetch_all(MYSQLI_ASSOC);
             closeConexionTienda($conexion);
@@ -29,32 +30,35 @@ class product
     }
 
     //insert 
-    public function insertProduct(product $newProduct): bool
+    static public function insertProduct(product $newProduct): bool
     {
         if (empty($newProduct)) {
             throw new InvalidArgumentException('Error insertando un producto, verifique los datos.');
         }
         $conexion = openConexionTienda();
-        $result = $conexion->query("INSERT INTO productos VALUE ({$newProduct->productId},'{$newProduct->name}',{$newProduct->price},{$newProduct->quantity},'{$newProduct->description}');");
+        $result = $conexion->query("INSERT INTO productos VALUE ('{$newProduct->name}',{$newProduct->price},{$newProduct->quantity},'{$newProduct->description}');");
         closeConexionTienda($conexion);
         return $result;
     }
 
     // update
-    public function updateProduct(product $updateProduct, int $productId): bool
+    public function updateProduct(): bool
     {
-        if (empty($updateProduct)) {
-            throw new InvalidArgumentException('Error actualizando un pedido, verifique los datos.');
+        try {
+            $conexion = openConexionTienda();
+            $result = $conexion->query("UPDATE productos SET nombre='{$this->name}', precio={$this->price}, cantidad={$this->quantity}, descripcion='{$this->description}' WHERE productoId={$this->productId};");
+            return $result;
+        } catch (Exception $e) {
+            echo "<script>console.log('Error: " . addslashes($e->getMessage()) . "');</script>";
+            return false;
+        } finally {
+
+            closeConexionTienda($conexion);
         }
-        $conexion = openConexionTienda();
-        $sql = "UPDATE productos SET productoId={$updateProduct->productId}, nombre='{$updateProduct->name}', precio={$updateProduct->price}, cantidad={$updateProduct->quantity}, descripcion='{$updateProduct->description}' WHERE productoId={$productId};";
-        $result = $conexion->query($sql);
-        closeConexionTienda($conexion);
-        return $result;
     }
 
     //delete 
-    public function deleteProduct(int $productId): bool
+    static public function deleteProduct(int $productId): bool
     {
         if ($productId < 0) {
             throw new InvalidArgumentException('El campo Id pedido no puede ser negativo.');
@@ -63,22 +67,5 @@ class product
         $result = $conexion->query("DELETE FROM productos WHERE productoId={$productId};");
         closeConexionTienda($conexion);
         return $result;
-    }
-    //select
-    public function selectProduct(int $productId): ?array
-    {
-        if ($productId < 0) {
-            throw new InvalidArgumentException('El campo Id pedido no puede ser negativo.');
-        }
-        $conexion = openConexionTienda();
-        $result = $conexion->query("SELECT * FROM productos WHERE productoId={$productId}");
-        if ($result->num_rows == 1) {
-            $data = $result->fetch_all(MYSQLI_ASSOC);
-            closeConexionTienda($conexion);
-            return $data;
-        } else {
-            closeConexionTienda($conexion);
-            return null;
-        }
     }
 }

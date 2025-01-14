@@ -2,14 +2,14 @@ function submitForm($form) {
     document.getElementById($form).submit();
 }
 
-function selectAll() {
-    Array.from(document.getElementsByClassName('selectClient')).forEach(checkbox => {
+function selectAll(classToSelect) {
+    Array.from(document.getElementsByClassName(classToSelect)).forEach(checkbox => {
         checkbox.checked = true;
     }); 
 }
 
-function unselectAll() {
-    Array.from(document.getElementsByClassName('selectClient')).forEach(checkbox => {
+function unselectAll(classToSelect) {
+    Array.from(document.getElementsByClassName(classToSelect)).forEach(checkbox => {
         checkbox.checked = false;
     }); 
 }
