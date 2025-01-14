@@ -50,14 +50,13 @@ class order
             $conexion = openConexionTienda();
             $sql = "UPDATE pedidos SET productoId={$this->productId}, clienteId={$this->clientId}, fecha='{$this->date}', precio={$this->price}, descripcion='{$this->description}', cantidad={$this->quantity} WHERE pedidoId={$this->orderId};";
             $result = $conexion->query($sql);
-            return $result;        
+            return $result;
         } catch (Exception $e) {
             echo "<script>console.log('Error: " . addslashes($e->getMessage()) . "');</script>";
             return false;
-        }finally{
+        } finally {
             closeConexionTienda($conexion);
         }
-        
     }
 
     //delete 
