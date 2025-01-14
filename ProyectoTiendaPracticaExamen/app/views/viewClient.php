@@ -16,7 +16,7 @@ include_once '../views/layouts/cabecera.php';
 
 <?php
 include_once '../views/layouts/pie.php';
-var_dump($depure);
+//var_dump($depure);
 ?>
 
 

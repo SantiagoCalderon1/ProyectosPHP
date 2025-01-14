@@ -47,7 +47,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $action = $_GET['option'];
+    $action = $_GET['option'] ?? '';
+
+    switch ($action) {
+        case 'cancelForm':
+            reloadViewClient();
+            break;
+
+        default:
+            //echo "Acción no reconocida.";
+            break;
+    }
 }
 
 include '../views/viewClient.php';

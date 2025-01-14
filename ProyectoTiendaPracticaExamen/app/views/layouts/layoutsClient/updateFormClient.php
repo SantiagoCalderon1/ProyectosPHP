@@ -21,7 +21,7 @@
 
         <div class="input">
             <input type="submit" value="Aceptar" >
-            <button onclick="window.location.href='../app/controllers/controllerClient.php?canceledForm'">
+            <button onclick="window.location.href='../controllers/controllerClient.php?option=cancelFrorm'">
                 Cancelar
             </button>
         </div>
