@@ -9,7 +9,7 @@
 <body>
     <form action="../controllers/controller.php" method="post">
         <input type="hidden" name="action" value="deleteForm">
-        <input type="hidden" name="empleadoId" value="<?php echo htmlspecialchars($clienteSelected[0]['id']) ?>">
+        <input type="hidden" name="empleadoId" value="<?php echo $id ?>">
         <p>Esta seguro de eliminar al empleado con ID: <?php echo htmlspecialchars($clienteSelected[0]['id']) ?> y nombre: <?php echo htmlspecialchars($clienteSelected[0]['nombre']) ?> </p>
         <input type="submit" value="Aceptar">
         <a href="">Cancelar</a>

@@ -56,7 +56,8 @@ class Empleado
         }
         try {
             $conexion = conexionEmpresa();
-            $result = $conexion->query("INSERT INTO empleados ('nombre','apellido','salario','fecha_contratacion','puesto') VALUES ('{$empleado->nombre}', '{$empleado->apellido}', {$empleado->salario}, '{$empleado->fecha_contratacion}', '{$empleado->puesto}');");
+            $query = "INSERT INTO empleados (nombre,apellido,salario,fecha_contratacion,puesto) VALUES ('{$empleado->nombre}', '{$empleado->apellido}', {$empleado->salario}, '{$empleado->fecha_contratacion}', '{$empleado->puesto}');";
+            $result = $conexion->query($query);
             return $result;
         } catch (Exception $e) {
             echo "<script>console.log('Error al insertar los datos del empleado.' {$e});</script>";
@@ -80,9 +81,10 @@ class Empleado
         }
         try {
             $conexion = conexionEmpresa();
-            $result = $conexion->query("UPDATE empleados SET nombre='{$empleado->nombre}', apellido='{$empleado->apellido}', salario={$empleado->salario}, fecha_contratacion='{$empleado->fecha_contratacion}', puesto='{$empleado->puesto}'  WHERE id='{$empleado->empleadoId}';");
-            echo "UPDATE empleados SET nombre='{$empleado->nombre}', apellido='{$empleado->apellido}', salario={$empleado->salario}, fecha_contratacion='{$empleado->fecha_contratacion}', puesto='{$empleado->puesto}'  WHERE id='{$empleado->empleadoId}';";
+            $query ="UPDATE empleados SET nombre='{$empleado->nombre}', apellido='{$empleado->apellido}', salario={$empleado->salario}, fecha_contratacion='{$empleado->fecha_contratacion}', puesto='{$empleado->puesto}'  WHERE id={$empleado->empleadoId};";
+            $result = $conexion->query($query);
             return $result;
+            echo $query;
         } catch (Exception $e) {
             echo "<script>console.log('Error al actualizar los datos del empleado.' {$e});</script>";
         } finally {
@@ -102,7 +104,7 @@ class Empleado
 
         try {
             $conexion = conexionEmpresa();
-            $result = $conexion->query("DELETE FROM empleados WHERE id='{$empleadoId}';");
+            $result = $conexion->query("DELETE FROM empleados WHERE id={$empleadoId};");
             return $result;
         } catch (Exception $e) {
             echo "<script>console.log('Error al actualizar los datos del empleado.' {$e});</script>";

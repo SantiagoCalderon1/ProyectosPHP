@@ -5,7 +5,7 @@ include_once '../models/empleado.php';
 $empleados = Empleado::getAllData();
 $clienteSelected = [];
 
-//MUESTO LA VISTA DE LOS EMPLEADOS
+//MUESTRO LA VISTA DE LOS EMPLEADOS
 include_once '../views/showListaEmpleados.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -24,6 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         default:
             break;
     }
+    
+    reloadView();
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -31,22 +33,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     switch ($action) {
         case 'formShow':
             $id = $_GET['id'] ?? '';
-            var_dump($id);
             $clienteSelected = Empleado::getEmployee($id);
             include_once '../views/showEmpleado.php';
+            
             break;
         case 'formInsert':
             include_once '../views/formInsert.php';
             break;
         case 'formUpdate':
             $id = $_GET['id'] ?? '';
-            var_dump($id);
             $clienteSelected = Empleado::getEmployee($id);
             include_once '../views/formUpdate.php';
             break;
         case 'formDelete':
             $id = $_GET['id'] ?? '';
-            var_dump($id);
             $clienteSelected = Empleado::getEmployee($id);
             include_once '../views/formDelete.php';
             break;
@@ -78,9 +78,8 @@ function addNewEmployee($formData)
 
 function updateEmployee($formData)
 {
-    if (isset($formData['name'], $formData['surname'], $formData['salary'], $formData['date'], $formData['puesto'])) {
-        $result = Empleado::updateEmployee(new Empleado($formData['name'],$formData['name'], $formData['surname'], $formData['salary'], $formData['date'], $formData['puesto']));
-        var_dump($formData);
+    if (isset($formData['id'],$formData['name'], $formData['surname'], $formData['salary'], $formData['date'], $formData['puesto'])) {
+        $result = Empleado::updateEmployee(new Empleado($formData['id'],$formData['name'], $formData['surname'], $formData['salary'], $formData['date'], $formData['puesto']));
         return $result;
     }
 }
@@ -88,9 +87,15 @@ function updateEmployee($formData)
 
 function deleteEmployee($formData)
 {
-    if (isset($formData['id'])) {
-        $result = Empleado::deleteEmployee($formData['id']);
+    if (isset($formData['empleadoId'])) {
+        $result = Empleado::deleteEmployee($formData['empleadoId']);
         return $result;
     }
 }
+
+function reloadView(): void
+{
+    header('Location: ' . $_SERVER['PHP_SELF']);
+}
+
 
