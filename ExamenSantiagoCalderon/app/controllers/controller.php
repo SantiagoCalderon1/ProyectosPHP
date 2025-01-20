@@ -56,8 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
 }
 
-
-
 /**
  * Me ha fallado el insertar pero me dio tiempo a resolverlo
  * Uncaught TypeError: Empleado::__construct(): Argument #4 
@@ -67,6 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
  * 
  * si lo podria arreglar
  */
+
 function addNewEmployee($formData)
 {
     if (isset($formData['name'], $formData['surname'], $formData['salary'], $formData['date'], $formData['puesto'])) {
@@ -97,5 +96,3 @@ function reloadView(): void
 {
     header('Location: ' . $_SERVER['PHP_SELF']);
 }
-
-
