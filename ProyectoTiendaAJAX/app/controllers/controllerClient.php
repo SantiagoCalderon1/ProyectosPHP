@@ -7,8 +7,6 @@ $orderBy = $_SESSION['orderBy'] ?? ''; // Recuperar el orderBy de la sesión
 $orderByFormat = '';
 $clients = client::getAllData($orderBy); // Aplicar el orden al cargar los clientes
 
-$depure = '';
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
 
@@ -116,3 +114,4 @@ function deleteForm($formData)
     }
     return false;
 }
+
