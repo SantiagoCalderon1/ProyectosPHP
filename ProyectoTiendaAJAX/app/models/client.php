@@ -11,9 +11,8 @@ class client
         //$this->var = $var;
     }
 
-    static public function getAllData($orderBy): ?array
+    static public function getAllData($orderBy = 'clienteId'): ?array
     {
-        $orderBy = $orderBy !== '' ? $orderBy : 'clienteId';
         $conexion = openConexionTienda();
         $result = $conexion->query("SELECT * FROM clientes ORDER BY {$orderBy} ASC;");
         if ($result->num_rows >= 1) {
@@ -22,7 +21,7 @@ class client
             return $data;
         } else {
             closeConexionTienda($conexion);
-            return null;
+            return [];
         }
     }
 
@@ -92,14 +91,15 @@ class client
             throw new InvalidArgumentException('El campo Id cliente no puede estar vacío.');
         }
         $conexion = openConexionTienda();
-        $result = $conexion->query("SELECT * FROM clientes WHERE clienteId='{$clientId}';");
+        $result = $conexion->query("SELECT * FROM clientes WHERE clienteId={$clientId};");
         if ($result->num_rows == 1) {
-            $data = $result->fetch_row(MYSQLI_ASSOC);
+            $data = $result->fetch_assoc(); //esto devuelve solo un aray de cliente
+            //$data = $result->fetch_all(MYSQLI_ASSOC); esto devuelve un array de arrays y para el cliente se accede con [0]
             closeConexionTienda($conexion);
             return $data;
         } else {
             closeConexionTienda($conexion);
-            return null;
+            return [];
         }
     }
 }

@@ -1,7 +1,6 @@
 <?php
 include_once '../../config/destroySesion.php';
 
-
 session_start();
 
 if (isset($_GET['option']) and $_GET['option'] != '') {
