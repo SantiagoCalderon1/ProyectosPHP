@@ -5,6 +5,7 @@ include_once '../../config/destroySesion.php';
 session_start();
 
 if (isset($_POST['username'], $_POST['password']) && $_POST['username'] != '' && $_POST['password'] != '') {
+    
     $user = user::checkLogin($_POST['username'], $_POST['password']);
     
     if ($user) {
