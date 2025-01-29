@@ -30,15 +30,16 @@
       let myTable = document.getElementById("myTable");
       const XHR = new XMLHttpRequest();
 
-      window.onload = () => {
+      document.addEventListener("DOMContentLoaded", () => {
         getAllData();
-      };
+      });
 
       function getAllData() {
-        XHR.open("GET", "../../API/index.php", true);
+        XHR.open("GET", "../../API/app/controllers/controllerClient.php", true);
         console.log("perticion get 1 enviada");
         if (XHR.status == 200 && XHR.readyState == 4) {
           let clientes = JSON.parse(XHR.responseText);
+          console.log(clientes);
           contruirTabla(clientes);
         }
         XHR.send();
