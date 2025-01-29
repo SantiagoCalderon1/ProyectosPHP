@@ -1,6 +1,8 @@
 <?php
 include_once '../models/client.php';
 
+
+
 class controller
 {
     public function getAllData(string $clienteId = '')
@@ -53,6 +55,7 @@ class controller
             if (!empty($nombre)) {
                 $atributos[] = "nombre='" . $nombre . "'";
             }
+            
             if (!empty($apellidos)) {
                 $atributos[] = "apellidos='" . $apellidos . "'";
             }
@@ -88,34 +91,12 @@ class controller
 
     public function showFormCreate()
     {
-        echo json_encode([
-            "success" => true,
-            "message" => "Mostrando formulario para insertar un nuevo cliente.",
-            "data" => $this->getFormCreateHTML()
-        ]);
-    }
-
-    private function getFormCreateHTML()
-    {
-        ob_start();
         include '../view/layouts/formInsert.php';
-        return ob_get_clean();
     }
 
     public function showFormUpdate()
     {
-        echo json_encode([
-            "success" => true,
-            "message" => "Mostrando formulario para actualizar un nuevo cliente.",
-            "data" => $this->getFormUpdateHTML()
-        ]);
-    }
-
-    private function getFormUpdateHTML()
-    {
-        ob_start();
         include '../view/layouts/formUpdate.php';
-        return ob_get_clean();
     }
 
     public function echoError(string $message)
