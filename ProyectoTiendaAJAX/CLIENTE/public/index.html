@@ -35,7 +35,7 @@
       });
 
       function getAllData() {
-        XHR.open("GET", "../../API/app/controllers/controllerClient.php", true);
+        XHR.open("GET", "http://localhost:8080/ProyectoTiendaAJAX/API/controladorClient.php", true);
         console.log("perticion get 1 enviada");
         if (XHR.status == 200 && XHR.readyState == 4) {
           let clientes = JSON.parse(XHR.responseText);

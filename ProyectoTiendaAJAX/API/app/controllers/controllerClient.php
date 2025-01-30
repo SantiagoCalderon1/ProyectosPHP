@@ -3,22 +3,19 @@ include_once '../models/client.php';
 
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
-
 header("Content-Type: text/html; charset=UTF-8");
-
 header("Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 $input = json_decode(file_get_contents('php://input'), true);
 
-// Obtén el método HTTP y el recurso solicitado
 $method = $_SERVER['REQUEST_METHOD'];
 $request = trim($_SERVER['REQUEST_URI'], '/');
 
-// Divide la URI para obtener el recurso y el ID (si aplica)
 $uri = explode('/', $request);
-$resource = $uri[1] ?? null;
-$newUri = $uri[2] ?? null;
+$lastpart = $uri[count($uri)-1] ?? null;
+
+
 
 switch ($method) {
     case 'GET':
