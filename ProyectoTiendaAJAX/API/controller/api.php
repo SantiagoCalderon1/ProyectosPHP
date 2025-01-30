@@ -19,20 +19,12 @@ $lastpart = $uri[count($uri)-1] ?? null;
 
 switch ($method) {
     case 'GET':
-        //if (is_numeric($newUri) || is_null($resource)) {
-        $data = getAllData($newUri);
-
-        echo json_encode($data);
-
-        //}
-
-        if ($newUri === 'create') {
-            showFormCreate();
+        if ($lastpart == 'api.php') {
+            $data = client::getAllData();
+            echo json_encode($data);
         }
 
-        if ($newUri === 'edit') {
-            showFormUpdate();
-        }
+
         break;
     case 'POST':
         insert($input);

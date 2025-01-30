@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practica Proyecto PHP</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-index">
+        <h1>Practica Proyecto PHP</h1>
+      </div>
+    </header>
+
+    <main>
+      <div class="listaClientes">
+        <table id="myTable" border="1">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Apellidos</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+
+      <div id="div"></div>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", getAllData);
+
+      function getAllData() {
+        let XHR = new XMLHttpRequest();
+        XHR.open(
+          "GET",
+          "http://localhost:8080/ProyectoTiendaAJAX/API/controller/api.php",
+          true
+        );
+
+        XHR.onreadystatechange = function () {
+          if (XHR.readyState == 4 && XHR.status == 200) {
+            let clientes = JSON.parse(XHR.responseText);
+            construirTabla(clientes);
+          }
+        };
+
+        XHR.send();
+      }
+
+      function construirTabla(clientes) {
+        let tableBody = document.getElementById("tableBody");
+        tableBody.innerHTML = ""; // 🔹 Limpia la tabla antes de agregar nuevos datos
+
+        clientes.forEach((cliente) => {
+          let tr = document.createElement("tr");
+
+          let tdId = document.createElement("td");
+          tdId.textContent = cliente.clienteId;
+
+          let tdNombre = document.createElement("td");
+          tdNombre.textContent = cliente.nombre;
+
+          let tdApellidos = document.createElement("td");
+          tdApellidos.textContent = cliente.apellidos;
+
+          tr.appendChild(tdId);
+          tr.appendChild(tdNombre);
+          tr.appendChild(tdApellidos);
+          tableBody.appendChild(tr);
+        });
+      }
+    </script>
+    <footer>Hecho por Santiago Calderon</footer>
+  </body>
+</html>

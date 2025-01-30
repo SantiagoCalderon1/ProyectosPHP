@@ -1,5 +1,5 @@
 <?php
-include_once '../../config/ConexionTienda.php';
+include_once '../config/ConexionTienda.php';
 
 class client
 {
@@ -25,7 +25,7 @@ class client
             }
             return [];
         } catch (Exception $e) {
-            echo "<script>console.log('Error: " . addslashes($e->getMessage()) . "');</script>";
+            //echo "<script>console.log('Error: " . addslashes($e->getMessage()) . "');</script>";
             return [];
         } finally {
             if ($conexion) {
@@ -45,7 +45,7 @@ class client
             $sql = "INSERT INTO clientes (nombre, apellidos) VALUES ('{$insertClient->clientName}','{$insertClient->clientSurname}');";
             $conexion->query($sql);
         } catch (Exception $e) {
-            echo "<script>console.log('Error: " . addslashes($e->getMessage()) . "')</script>";
+            //echo "<script>console.log('Error: " . addslashes($e->getMessage()) . "')</script>";
             return false;
         } finally {
             if ($conexion) {
@@ -65,7 +65,7 @@ class client
                 return $result;
             }
         } catch (Exception $e) {
-            echo "<script>console.log('Error: " . addslashes($e->getMessage()) . "');</script>";
+            //echo "<script>console.log('Error: " . addslashes($e->getMessage()) . "');</script>";
             return false;
         } finally {
             if ($conexion) {
@@ -82,16 +82,16 @@ class client
         $conexion = null;
         try {
             $conexion = openConexionTienda();
-            //verificamos si el cliente ha hecho pedidos, y si es así no lo permitiremos eliminar 
+            //verificamos si el cliente ha h//echo pedidos, y si es así no lo permitiremos eliminar 
             $numPedidos = $conexion->query("SELECT COUNT(*) FROM pedidos WHERE clienteId={$clientId};");
             if ($numPedidos->fetch_column() > 0) {
                 throw new Exception('No se puede eliminar un cliente que tiene pedidos asociados.');
             }
             $sql = "DELETE FROM clientes WHERE clienteId={$clientId};";
-            // no se podrá eliminar clietes que previamente hayan hecho un pedido, es para cuidar la consistencia de los datos
+            // no se podrá eliminar clietes que previamente hayan h//echo un pedido, es para cuidar la consistencia de los datos
             return $conexion->query($sql);
         } catch (Exception $e) {
-            echo "<script>console.log('Error: " . addslashes($e->getMessage()) . "');</script>";
+            //echo "<script>console.log('Error: " . addslashes($e->getMessage()) . "');</script>";
             return false;
         } finally {
             if ($conexion) {
